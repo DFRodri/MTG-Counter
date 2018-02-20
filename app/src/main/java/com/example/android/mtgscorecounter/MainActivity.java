@@ -7,19 +7,25 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+  //global variables used
+
+    //records the winning type
     int winType;
+
+    //initial position of the first result to be displayed
+    //if there was a zero here, the results would be updated from the left to the right instead from the right to the left
     int duelsOrder = 3;
-    String playerA;
-    String playerB;
+
+    //format of playerA & B array: {life, poison counters, current result}
+    //values declared are the starting values
+    int[] playerA = {20, 0, 0};
+    int[] playerB = {20, 0, 0};
+
+    //initial displayed values at the last duels
     String[] duels = {"--", "--", "--", "--"};
-    int resultA;
-    int resultB;
+
     String results;
     String win;
-    int lifeA = 20;
-    int lifeB = 20;
-    int poisonA = 0;
-    int poisonB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,231 +33,245 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //method to add life to player A
     public void addLife_A(View view) {
-        lifeA += 1;
-        displayLifePlayerA(lifeA);
+
+        playerA[0] += 1;
+        displayLifePlayerA(playerA[0]);
+
     }
 
+    //method to remove life from player A
     public void removeLife_A(View view) {
-        lifeA -= 1;
-        displayLifePlayerA(lifeA);
-        if (lifeA < 1) {
-            resultB += 1;
-            lifeA = 20;
-            lifeB = 20;
-            poisonA = 0;
-            poisonB = 0;
+
+        playerA[0] -= 1;
+        displayLifePlayerA(playerA[0]);
+
+        if (playerA[0] < 1) {
+
+            playerB[2] += 1;
+
             winType = 1;
             duelsOrder += 1;
+
             displayResults(results);
             displayLatestDuels(duels);
-            displayLifePlayerA(lifeA);
-            displayLifePlayerB(lifeB);
-            displayPoisonPlayerA(poisonA);
-            displayPoisonPlayerB(poisonB);
+            reset_duel(view);
+
         }
+
     }
 
     public void addPoison_A(View view) {
-        poisonA += 1;
-        displayPoisonPlayerA(poisonA);
-        if (poisonA > 9) {
-            resultB += 1;
-            lifeA = 20;
-            lifeB = 20;
-            poisonA = 0;
-            poisonB = 0;
+
+        playerA[1] += 1;
+        displayPoisonPlayerA(playerA[1]);
+
+        if (playerA[1] > 9) {
+
+            playerB[2] += 1;
+
             winType = 2;
             duelsOrder += 1;
+
             displayResults(results);
             displayLatestDuels(duels);
-            displayLifePlayerA(lifeA);
-            displayLifePlayerB(lifeB);
-            displayPoisonPlayerA(poisonA);
-            displayPoisonPlayerB(poisonB);
+            reset_duel(view);
+
         }
+
     }
 
+    //method to remove a poison counter from player A
     public void removePoison_A(View view) {
-        poisonA -= 1;
-        if (poisonA < 0) {
-            poisonA = 0;
+
+        playerA[1] -= 1;
+
+        if (playerA[1] < 0) {
+            playerA[1] = 0;
         }
-        displayPoisonPlayerA(poisonA);
+
+        displayPoisonPlayerA(playerA[1]);
+
     }
 
     public void mill_A(View view) {
-        resultB += 1;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        playerB[2] += 1;
+
         winType = 3;
         duelsOrder += 1;
+
         displayResults(results);
         displayLatestDuels(duels);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
     public void other_A(View view) {
-        resultB += 1;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        playerB[2] += 1;
+
         winType = 4;
         duelsOrder += 1;
+
         displayResults(results);
         displayLatestDuels(duels);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
+    //method to add a life point to player A
     public void addLife_B(View view) {
-        lifeB += 1;
-        displayLifePlayerB(lifeB);
+
+        playerB[0] += 1;
+        displayLifePlayerB(playerB[0]);
+
     }
 
+    //method to remove a life point from player A
     public void removeLife_B(View view) {
-        lifeB -= 1;
-        displayLifePlayerB(lifeB);
-        if (lifeB < 1) {
-            resultA += 1;
-            lifeA = 20;
-            lifeB = 20;
-            poisonA = 0;
-            poisonB = 0;
+
+        playerB[0] -= 1;
+        displayLifePlayerB(playerB[0]);
+
+        if (playerB[0] < 1) {
+
+            playerA[2] += 1;
+
             winType = 1;
             duelsOrder += 1;
+
             displayResults(results);
             displayLatestDuels(duels);
-            displayLifePlayerA(lifeA);
-            displayLifePlayerB(lifeB);
-            displayPoisonPlayerA(poisonA);
-            displayPoisonPlayerB(poisonB);
+            reset_duel(view);
+
         }
+
     }
 
+    //method to add a poison counter to player B
     public void addPoison_B(View view) {
-        poisonB += 1;
-        displayPoisonPlayerB(poisonB);
-        if (poisonB > 9) {
-            resultA += 1;
-            lifeA = 20;
-            lifeB = 20;
-            poisonA = 0;
-            poisonB = 0;
+
+        playerB[1] += 1;
+        displayPoisonPlayerB(playerB[1]);
+
+        if (playerB[1] > 9) {
+
+            playerA[2] += 1;
+
             winType = 2;
             duelsOrder += 1;
+
             displayResults(results);
             displayLatestDuels(duels);
-            displayLifePlayerA(lifeA);
-            displayLifePlayerB(lifeB);
-            displayPoisonPlayerA(poisonA);
-            displayPoisonPlayerB(poisonB);
+            reset_duel(view);
+
         }
+
     }
 
+    //method to remove a poison counter from player B
     public void removePoison_B(View view) {
-        poisonB -= 1;
-        if (poisonB < 0) {
-            poisonB = 0;
+
+        playerB[1] -= 1;
+
+        if (playerB[1] < 0) {
+            playerB[1] = 0;
         }
-        displayPoisonPlayerB(poisonB);
+
+        displayPoisonPlayerB(playerB[1]);
+
     }
 
+    //method to declare that player B lost by being out of cards to draw(a.k.a. mill)
     public void mill_B(View view) {
-        resultA += 1;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        playerA[2] += 1;
+
         winType = 3;
         duelsOrder += 1;
+
         displayResults(results);
         displayLatestDuels(duels);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
+    //method to declare that player B lost by a non-common method (e.g.: card effect)
     public void other_B(View view) {
-        resultA += 1;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        playerA[2] += 1;
+
         winType = 4;
         duelsOrder += 1;
+
         displayResults(results);
         displayLatestDuels(duels);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
+    //method to declare the current duel as a tie, restart the duel, and update the score at the top with that piece of info
     public void tie(View view) {
-        resultA += 1;
-        resultB += 1;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        playerA[2] += 1;
+        playerB[2] += 1;
+
         duelsOrder += 1;
         winType = 5;
+
         displayResults(results);
         displayLatestDuels(duels);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
+    //method to reset the current duel to its initial values
+    //it's also called by any other method when someone loses a duel
     public void reset_duel(View view) {
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+
+        playerA[0] = 20;
+        playerB[0] = 20;
+        playerA[1] = 0;
+        playerB[1] = 0;
+
+        displayLifePlayerA(playerA[0]);
+        displayLifePlayerB(playerB[0]);
+        displayPoisonPlayerA(playerA[1]);
+        displayPoisonPlayerB(playerB[1]);
+
     }
 
+
+    //method to reset everything to their initial values, even the name of the players
     public void reset_match(View view) {
-        playerA = "Player A";
-        playerB = "Player B";
-        resultA = 0;
-        resultB = 0;
-        lifeA = 20;
-        lifeB = 20;
-        poisonA = 0;
-        poisonB = 0;
+
+        TextView namePlayerA = this.findViewById(R.id.name_player_a);
+        TextView namePlayerB = this.findViewById(R.id.name_player_b);
+
+        namePlayerA.setText("");
+        namePlayerB.setText("");
+
+
+        playerA[2] = 0;
+        playerB[2] = 0;
+
         duels[0] = "--";
         duels[1] = "--";
         duels[2] = "--";
         duels[3] = "--";
         winType = 0;
+
         displayLatestDuels(duels);
         displayResults(results);
-        displayLifePlayerA(lifeA);
-        displayLifePlayerB(lifeB);
-        displayPoisonPlayerA(poisonA);
-        displayPoisonPlayerB(poisonB);
+        reset_duel(view);
+
     }
 
-    /**
-     * Displays the last four duels with the winning conditions.
-     * If life points drop to zero, only the score is displayed.
-     */
+    //method that displays the results for the last four duels with the respective winning conditions
     public void displayLatestDuels(String[] duels) {
+
         if (duelsOrder > 3) {
             duelsOrder -= 1;
         }
@@ -262,73 +282,80 @@ public class MainActivity extends AppCompatActivity {
 
         if (winType == 0) {
             win = "--";
-        }
-        if (winType == 1) {
-            win = resultA + " - " + resultB + " " + getString(R.string.life);
-        }
-        if (winType == 2) {
-            win = resultA + " - " + resultB + " " + getString(R.string.poison);
-        }
-        if (winType == 3) {
-            win = resultA + " - " + resultB + " " + getString(R.string.mill);
-        }
-        if (winType == 4) {
-            win = resultA + " - " + resultB + " " + getString(R.string.other);
-        }
-        if (winType == 5) {
-            win = resultA + " - " + resultB + " " + getString(R.string.tie);
+        } else {
+
+            win = playerA[2] + " - " + playerB[2] + " ";
+
+            if (winType == 1) {
+                win += getString(R.string.life);
+            }
+            if (winType == 2) {
+                win += getString(R.string.poison);
+            }
+            if (winType == 3) {
+                win += getString(R.string.mill);
+            }
+            if (winType == 4) {
+                win += getString(R.string.other);
+            }
+            if (winType == 5) {
+                win += getString(R.string.tie);
+            }
+
         }
 
         duels[duelsOrder] = win;
 
-        TextView duels0View = (TextView) findViewById(R.id.first_match);
+        TextView duels0View = this.findViewById(R.id.first_match);
+        TextView duels1View = this.findViewById(R.id.second_match);
+        TextView duels2View = this.findViewById(R.id.third_match);
+        TextView duels3View = this.findViewById(R.id.fourth_match);
+
         duels0View.setText(String.valueOf(duels[0]));
-        TextView duels1View = (TextView) findViewById(R.id.second_match);
         duels1View.setText(String.valueOf(duels[1]));
-        TextView duels2View = (TextView) findViewById(R.id.third_match);
         duels2View.setText(String.valueOf(duels[2]));
-        TextView duels3View = (TextView) findViewById(R.id.fourth_match);
         duels3View.setText(String.valueOf(duels[3]));
     }
 
-    /**
-     * Displays the life points for Player A.
-     */
+    //method to display the life points for Player A
     public void displayLifePlayerA(int lifeA) {
-        TextView lifeView = (TextView) findViewById(R.id.life_player_a);
+
+        TextView lifeView = this.findViewById(R.id.life_player_a);
         lifeView.setText(String.valueOf(lifeA));
+
     }
 
-    /**
-     * Displays the poison counters for Player A.
-     */
+    //method to display the poison counters for Player A
     public void displayPoisonPlayerA(int poisonA) {
-        TextView poisonView = (TextView) findViewById(R.id.poison_player_a);
+
+        TextView poisonView = this.findViewById(R.id.poison_player_a);
         poisonView.setText(String.valueOf(poisonA));
+
     }
 
-    /**
-     * Displays the life points for Player B.
-     */
+    //method to display the life points for Player B
     public void displayLifePlayerB(int lifeB) {
-        TextView lifeView = (TextView) findViewById(R.id.life_player_b);
+
+        TextView lifeView = this.findViewById(R.id.life_player_b);
         lifeView.setText(String.valueOf(lifeB));
+
     }
 
-    /**
-     * Displays the poison counters for Player B.
-     */
+    //method to display the poison counters for Player B
     public void displayPoisonPlayerB(int poisonB) {
-        TextView poisonView = (TextView) findViewById(R.id.poison_player_b);
+
+        TextView poisonView = this.findViewById(R.id.poison_player_b);
         poisonView.setText(String.valueOf(poisonB));
+
     }
 
-    /**
-     * Displays the score.
-     */
+    //method to display the current score
     public void displayResults(String results) {
-        results = resultA + " - " + resultB;
-        TextView resultsView = (TextView) findViewById(R.id.match_results);
-        resultsView.setText(String.valueOf(results));
+
+        results = playerA[2] + " - " + playerB[2];
+        TextView resultsView = this.findViewById(R.id.match_results);
+        resultsView.setText(results);
+
     }
+
 }
