@@ -270,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method that displays the results for the last four duels with the respective winning conditions
+    //it also pushes the results from the right to the left whenever a duel ends
     public void displayLatestDuels(String[] duels) {
 
         if (duelsOrder > 3) {
