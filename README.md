@@ -1,6 +1,10 @@
 # MTG-Counter
 Project #2 of the Android Basics Nano-Degree
 
+#### Short Description
+APP that counts the life points, poison counters, and wins of an entire match of Magic: The Gathering.
+
+#### Brief Story about the Project
 This project was initially made as part of the Google Challenge 2017 (and now my second project of the ABND since we can reuse them). It has evolved a bit since the first time I made it, during the Google Challenge 2017, and at the moment this is what I've in hands.
 
 This was made as a tool to help players of Magic: The Gathering play their duels/matches easier in the XXI century. It was not to be a full replacement of the game and never will.
