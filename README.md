@@ -2,7 +2,10 @@
 Project #2 of the Android Basics Nano-Degree
 
 #### Short Description
-APP that counts the life points, poison counters, and wins of an entire match of Magic: The Gathering.
+- Super simple Android APP that counts the life points, poison counters, and wins of an entire match of Magic: The Gathering
+- Works on API 15+ (Ice Cream Sandwich and above)
+- Should be fine in any screen (smaller screens (mdpi and hdpi of small resolutions) may be forced to stick to landscape orientations)
+- Languages: ENG, PT-PT
 
 #### Brief Story about the Project
 This project was initially made as part of the Google Challenge 2017 (and now my second project of the ABND since we can reuse them). It has evolved a bit since the first time I made it, during the Google Challenge 2017, and at the moment this is what I've in hands.
@@ -11,7 +14,7 @@ This was made as a tool to help players of Magic: The Gathering play their duels
 
 I created this after watching a few Championship matches over Youtube and Twitch. They looked like crap and very painful to watch. The main reason is that, unless you're aware of everything (up to date with every single card and effect), it makes you feel lost. It's very anti-returning/new players and one of many reasons why it seems to be falling after being the number one game of its genre for many years.
  
-With this I'm not trying to make the game better, not at all, but instead giving it a hand where I hope someone notices its existence and decides to take a step further into the right direction by adding techonology to the paper game. To make it more interactive than just players and comments. "It's the XXI Century, man!"
+With this I'm not trying to make the game better, not at all, but instead giving it a hand where I hope someone notices its existence and decides to take a step further into the right direction by adding techonology to the paper game (there are better coders out there than me, a simple rookie learning all this for the first time). To make it more interactive than just players and comments. "It's the XXI Century, man!"
 
 I personally don't play the game any more but it's a shame to see such an old and great game like Magic: The Gathering, that needs urgently to be actualized with the present, not getting the love it needs and deserve.
  
