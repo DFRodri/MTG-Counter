@@ -18,7 +18,7 @@ Have fun and I hope this app ends being useful to someone.
 
 
 <p>Landscape Orientation:</p>
-<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203841.png" width="25%" height="25%">
+<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203841.png" width="50%" height="50%">
 
 ## Notice:
 <p>This project is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
