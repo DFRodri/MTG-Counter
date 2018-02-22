@@ -25,4 +25,4 @@ Have fun and I hope this app ends being useful to someone.
 ## Notice:
 <p>This project is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
 https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode</p>
-<p>tl;dr - You can share, edit, adapt, and many more, but you can't profit from it at any cost.</p>
+<p>tl;dr - You can use, share, edit, adapt, and many more, but you can't profit from it at any cost.</p>
