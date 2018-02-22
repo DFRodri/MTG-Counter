@@ -1,13 +1,15 @@
 # MTG-Counter
 Project #2 of the Android Basics Nano-Degree
 
-This project was initially made as part of the Google Challenge 2017 (and now my second project of the ABND since we can reuse them). It has evolved a bit and at the moment this is what you've in hands. Nobody knows about its future so who knows if it won't evolve further? 
+This project was initially made as part of the Google Challenge 2017 (and now my second project of the ABND since we can reuse them). It has evolved a bit since the first time I made it, during the Google Challenge 2017, and at the moment this is what I've in hands.
 
 This was made as a tool to help players of Magic: The Gathering play their duels/matches easier in the XXI century. It was not to be a full replacement of the game and never will.
 
-I created this after watching a few Championship matches over Youtube and Twitch. They looked like crap and very painful to watch. The main reason is that , unless you're aware of everything (up to date with every single card and effect), it makes you feel lost. It's very like anti-returning/new players and one of many reasons why it's failing after being the number one game (the same can be said with many other card games).
+I created this after watching a few Championship matches over Youtube and Twitch. They looked like crap and very painful to watch. The main reason is that, unless you're aware of everything (up to date with every single card and effect), it makes you feel lost. It's very anti-returning/new players and one of many reasons why it seems to be falling after being the number one game of its genre for many years.
  
-With this I'm not trying to make the game better but instead giving it a hand where I hope someone notices its existence and decides to take a step further into the right direction (like with many other similar apps around). Magic: The Gathering is an old game that needs to be actualized with the present in lots of aspects or it will always be "the game that once was cool to play".
+With this I'm not trying to make the game better, not at all, but instead giving it a hand where I hope someone notices its existence and decides to take a step further into the right direction by adding techonology to the paper game. To make it more interactive than just players and comments. "It's the XXI Century, man!"
+
+I personally don't play the game any more but it's a shame to see such an old and great game like Magic: The Gathering, that needs urgently to be actualized with the present, not getting the love it needs and deserve.
  
 Have fun and I hope this app ends being useful to someone.
 
