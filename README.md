@@ -22,6 +22,6 @@ Here are some screenshots:
 <img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203841.png" width="25%" height="25%">
 
 # Notice:
-This project is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
-https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-tl;dr - You can share, edit, adapt, and many more, but you can't sell it at any cost.
+<p>This project is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License</p>
+<p>https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode</p>
+<p>tl;dr - You can share, edit, adapt, and many more, but you can't sell it at any cost.</p>
