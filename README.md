@@ -15,11 +15,11 @@ Have fun and I hope this app ends being useful to someone.
 Here are some screenshots:
 
 Portrait Orientation:
-<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203822.png" height="50%">
+<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203822.png" height="25%" width="25%">
 
 
 Landscape Orientation:
-<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203841.png" width="50%">
+<img src="https://github.com/DFRodri/MTG-Counter/blob/master/screenshots/Screenshot_20180222-203841.png" width="25%" height="25%">
 
 # Notice:
 This project is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
