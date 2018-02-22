@@ -7,7 +7,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-  //global variables used
+    //global variables used
+
+    //variables used to handle the rotations
+    private static final String PLAYER_A = "playerAStats";
+    private static final String PLAYER_B = "playerBStats";
+    private static final String LAST_DUELS = "duelsValues";
+    private static final String CURRENT_SCORE = "currentScoreSaved";
 
     //records the winning type
     int winType;
@@ -25,27 +31,65 @@ public class MainActivity extends AppCompatActivity {
     String[] duels = {"--", "--", "--", "--"};
 
     //stores the current duel score displayed
-    String results;
+    String currentScore;
+
+    /**
+     * adicionar cartas de magic ao fundo de vida e pontos de veneno
+     * adicionar um cristal de cor como drawable a cada nome de jogador
+     **/
+
+    //saves the important variables to use when the screen rotates, before the onDestroy() happens
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putIntArray(PLAYER_A, playerA);
+        savedInstanceState.putIntArray(PLAYER_B, playerB);
+        savedInstanceState.putStringArray(LAST_DUELS, duels);
+        savedInstanceState.putString(CURRENT_SCORE, currentScore);
+
+    }
+
+    //reloads the important saved stuff when the screen rotated, after the onDestroy() happens
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        playerA = savedInstanceState.getIntArray(PLAYER_A);
+        playerB = savedInstanceState.getIntArray(PLAYER_B);
+        duels = savedInstanceState.getStringArray(LAST_DUELS);
+        currentScore = savedInstanceState.getString(CURRENT_SCORE);
+
+        displayLifePlayerA();
+        displayLifePlayerB();
+        displayPoisonPlayerA();
+        displayPoisonPlayerB();
+        displayDuelsResults();
+        displayResults();
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
-    //method to add life to player A
+    //method to add a life point to player A
     public void addLife_A(View view) {
 
         playerA[0]++;
-        displayLifePlayerA(playerA[0]);
+        displayLifePlayerA();
 
     }
 
-    //method to remove life from player A
+    //method to remove a life point from player A and if it that value goes to zero, declare player B as the winner
     public void removeLife_A(View view) {
 
         playerA[0]--;
-        displayLifePlayerA(playerA[0]);
+        displayLifePlayerA();
 
         if (playerA[0] < 1) {
 
@@ -54,18 +98,19 @@ public class MainActivity extends AppCompatActivity {
             winType = 1;
             duelsOrder++;
 
-            displayResults(results);
-            displayLatestDuels(duels);
+            displayResults();
+            displayLatestDuels();
             reset_duel(view);
 
         }
 
     }
 
+    //method to add a poison counter to player A and if 10, declare player B as the winner of the current duel
     public void addPoison_A(View view) {
 
         playerA[1]++;
-        displayPoisonPlayerA(playerA[1]);
+        displayPoisonPlayerA();
 
         if (playerA[1] > 9) {
 
@@ -74,15 +119,15 @@ public class MainActivity extends AppCompatActivity {
             winType = 2;
             duelsOrder++;
 
-            displayResults(results);
-            displayLatestDuels(duels);
+            displayResults();
+            displayLatestDuels();
             reset_duel(view);
 
         }
 
     }
 
-    //method to remove a poison counter from player A
+    //method to remove a poison counter from player A and prevent it to go into negatives
     public void removePoison_A(View view) {
 
         playerA[1]--;
@@ -91,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
             playerA[1] = 0;
         }
 
-        displayPoisonPlayerA(playerA[1]);
+        displayPoisonPlayerA();
 
     }
 
+    //method to declare that player A lost because he couldn't draw a card from his/her deck(a.k.a. mill)
     public void mill_A(View view) {
 
         playerB[2]++;
@@ -102,12 +148,13 @@ public class MainActivity extends AppCompatActivity {
         winType = 3;
         duelsOrder++;
 
-        displayResults(results);
-        displayLatestDuels(duels);
+        displayResults();
+        displayLatestDuels();
         reset_duel(view);
 
     }
 
+    //method to declare that player A lost by a non-common method (e.g.: card effect)
     public void other_A(View view) {
 
         playerB[2]++;
@@ -115,25 +162,25 @@ public class MainActivity extends AppCompatActivity {
         winType = 4;
         duelsOrder++;
 
-        displayResults(results);
-        displayLatestDuels(duels);
+        displayResults();
+        displayLatestDuels();
         reset_duel(view);
 
     }
 
-    //method to add a life point to player A
+    //method to add a life point to player B
     public void addLife_B(View view) {
 
         playerB[0]++;
-        displayLifePlayerB(playerB[0]);
+        displayLifePlayerB();
 
     }
 
-    //method to remove a life point from player A
+    //method to remove a life point from player B and if it that value goes to zero, declare player A as the winner
     public void removeLife_B(View view) {
 
         playerB[0]--;
-        displayLifePlayerB(playerB[0]);
+        displayLifePlayerB();
 
         if (playerB[0] < 1) {
 
@@ -142,19 +189,19 @@ public class MainActivity extends AppCompatActivity {
             winType = 1;
             duelsOrder++;
 
-            displayResults(results);
-            displayLatestDuels(duels);
+            displayResults();
+            displayLatestDuels();
             reset_duel(view);
 
         }
 
     }
 
-    //method to add a poison counter to player B
+    //method to add a poison counter to player B and if 10, declare player A as the winner of the current duel
     public void addPoison_B(View view) {
 
         playerB[1]++;
-        displayPoisonPlayerB(playerB[1]);
+        displayPoisonPlayerB();
 
         if (playerB[1] > 9) {
 
@@ -163,15 +210,15 @@ public class MainActivity extends AppCompatActivity {
             winType = 2;
             duelsOrder++;
 
-            displayResults(results);
-            displayLatestDuels(duels);
+            displayResults();
+            displayLatestDuels();
             reset_duel(view);
 
         }
 
     }
 
-    //method to remove a poison counter from player B
+    //method to remove a poison counter from player B and prevent it to go into negatives
     public void removePoison_B(View view) {
 
         playerB[1]--;
@@ -180,11 +227,11 @@ public class MainActivity extends AppCompatActivity {
             playerB[1] = 0;
         }
 
-        displayPoisonPlayerB(playerB[1]);
+        displayPoisonPlayerB();
 
     }
 
-    //method to declare that player B lost by being out of cards to draw(a.k.a. mill)
+    //method to declare that player B lost because he couldn't draw a card from his/her deck(a.k.a. mill)
     public void mill_B(View view) {
 
         playerA[2]++;
@@ -192,8 +239,8 @@ public class MainActivity extends AppCompatActivity {
         winType = 3;
         duelsOrder++;
 
-        displayResults(results);
-        displayLatestDuels(duels);
+        displayResults();
+        displayLatestDuels();
         reset_duel(view);
 
     }
@@ -206,8 +253,8 @@ public class MainActivity extends AppCompatActivity {
         winType = 4;
         duelsOrder++;
 
-        displayResults(results);
-        displayLatestDuels(duels);
+        displayResults();
+        displayLatestDuels();
         reset_duel(view);
 
     }
@@ -221,8 +268,8 @@ public class MainActivity extends AppCompatActivity {
         duelsOrder++;
         winType = 5;
 
-        displayResults(results);
-        displayLatestDuels(duels);
+        displayResults();
+        displayLatestDuels();
         reset_duel(view);
 
     }
@@ -236,10 +283,10 @@ public class MainActivity extends AppCompatActivity {
         playerA[1] = 0;
         playerB[1] = 0;
 
-        displayLifePlayerA(playerA[0]);
-        displayLifePlayerB(playerB[0]);
-        displayPoisonPlayerA(playerA[1]);
-        displayPoisonPlayerB(playerB[1]);
+        displayLifePlayerA();
+        displayLifePlayerB();
+        displayPoisonPlayerA();
+        displayPoisonPlayerB();
 
     }
 
@@ -263,15 +310,15 @@ public class MainActivity extends AppCompatActivity {
         duels[3] = "--";
         winType = 0;
 
-        displayLatestDuels(duels);
-        displayResults(results);
+        displayLatestDuels();
+        displayResults();
         reset_duel(view);
 
     }
 
     //method that displays the results for the last four duels with the respective winning conditions
     //it also pushes the results from the right to the left whenever a duel ends
-    public void displayLatestDuels(String[] duels) {
+    public void displayLatestDuels() {
 
         String win;
 
@@ -281,8 +328,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //follow up to the offscreen data display; grabs data contained in the variables and push it to the left
-        System.arraycopy(duels, 1, duels, 0, duels.length-1);
+        System.arraycopy(duels, 1, duels, 0, duels.length - 1);
 
+        //makes the string to place into one of the boxes at the top bar
         if (winType == 0) {
             win = "--";
         } else {
@@ -309,55 +357,62 @@ public class MainActivity extends AppCompatActivity {
 
         duels[duelsOrder] = win;
 
+        displayDuelsResults();
+
+    }
+
+    public void displayDuelsResults(){
+
         TextView duelsText0 = this.findViewById(R.id.first_match);
         TextView duelsText1 = this.findViewById(R.id.second_match);
         TextView duelsText2 = this.findViewById(R.id.third_match);
         TextView duelsText3 = this.findViewById(R.id.fourth_match);
 
-        duelsText0.setText(String.valueOf(duels[0]));
-        duelsText1.setText(String.valueOf(duels[1]));
-        duelsText2.setText(String.valueOf(duels[2]));
-        duelsText3.setText(String.valueOf(duels[3]));
+        duelsText0.setText(duels[0]);
+        duelsText1.setText(duels[1]);
+        duelsText2.setText(duels[2]);
+        duelsText3.setText(duels[3]);
+
     }
 
     //method to display the life points for Player A
-    public void displayLifePlayerA(int lifeA) {
+    public void displayLifePlayerA() {
 
-        TextView lifeView = this.findViewById(R.id.life_player_a);
-        lifeView.setText(String.valueOf(lifeA));
+        TextView lifeViewA = this.findViewById(R.id.life_player_a);
+        lifeViewA.setText(String.valueOf(playerA[0]));
 
     }
 
     //method to display the poison counters for Player A
-    public void displayPoisonPlayerA(int poisonA) {
+    public void displayPoisonPlayerA() {
 
-        TextView poisonView = this.findViewById(R.id.poison_player_a);
-        poisonView.setText(String.valueOf(poisonA));
+        TextView poisonViewA = this.findViewById(R.id.poison_player_a);
+        poisonViewA.setText(String.valueOf(playerA[1]));
 
     }
 
     //method to display the life points for Player B
-    public void displayLifePlayerB(int lifeB) {
+    public void displayLifePlayerB() {
 
-        TextView lifeView = this.findViewById(R.id.life_player_b);
-        lifeView.setText(String.valueOf(lifeB));
+        TextView lifeViewB = this.findViewById(R.id.life_player_b);
+        lifeViewB.setText(String.valueOf(playerB[0]));
 
     }
 
     //method to display the poison counters for Player B
-    public void displayPoisonPlayerB(int poisonB) {
+    public void displayPoisonPlayerB() {
 
-        TextView poisonView = this.findViewById(R.id.poison_player_b);
-        poisonView.setText(String.valueOf(poisonB));
+        TextView poisonViewB = this.findViewById(R.id.poison_player_b);
+        poisonViewB.setText(String.valueOf(playerB[1]));
 
     }
 
     //method to display the current score
-    public void displayResults(String results) {
+    public void displayResults() {
 
-        results = playerA[2] + " - " + playerB[2];
+        currentScore = playerA[2] + " - " + playerB[2];
         TextView resultsView = this.findViewById(R.id.match_results);
-        resultsView.setText(results);
+        resultsView.setText(currentScore);
 
     }
 

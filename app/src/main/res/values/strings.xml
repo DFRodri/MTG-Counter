@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Magic: The Gathering Score Counter</string>
+
+    <!--Buttons-->
+    <string name="restart_match">New Match</string>
+    <string name="restart_duel">New Duel</string>
+    <string name="tie">Tie</string>
+    <string name="mill" translatable="false">Mill</string>
+    <string name="other">Other</string>
+    <string name="poison">Poison</string>
+    <string name="life">Life</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="poison_counters">Poison Counters</string>
+    <string name="life_points">Life Points</string>
+    <string name="score">Last Duels</string>
+
+    <!--Other Relevant Info-->
+    <string name="initial_life">20</string>
+    <string name="initial_poison">0</string>
+    <string name="starting_score">0\-0</string>
+    <string name="player_A">Player A</string>
+    <string name="player_b">Player B</string>
+    <string name="past_match">\-\-</string>
+    <string name="last_results">Last Duels</string>
+</resources>

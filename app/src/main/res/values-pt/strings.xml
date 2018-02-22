@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Magic: The Gathering Tabela de Pontuação</string>
+    <string name="restart_match">Novo Encontro</string>
+    <string name="restart_duel">Novo Duelo</string>
+    <string name="tie">Empate</string>
+    <string name="other">Outro</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="poison_counters">Contadores de Veneno</string>
+    <string name="life_points">Pontos de Vida</string>
+    <string name="initial_life">20</string>
+    <string name="initial_poison">0</string>
+    <string name="starting_score">0\-0</string>
+    <string name="player_A">Jogador A</string>
+    <string name="player_b">Jogador B</string>
+    <string name="past_match">\-\-</string>
+    <string name="last_results">Últimos Duelos </string>
+    <string name="score">Últimos Duelos</string>
+    <string name="poison">Veneno</string>
+    <string name="life">Vida</string>
+</resources>

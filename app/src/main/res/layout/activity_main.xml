@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgValuesLastDuels">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/last_duels_box"
+            android:gravity="center"
+            android:text="@string/last_results"
+            android:textColor="@color/bgValuesLastDuels"
+            android:textSize="@dimen/scoreResults" />
+
+        <TextView
+            android:id="@+id/first_match"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/past_match"
+            android:textAllCaps="true"
+            android:textColor="@color/duelsText"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/second_match"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/past_match"
+            android:textAllCaps="true"
+            android:textColor="@color/duelsText"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/third_match"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/past_match"
+            android:textAllCaps="true"
+            android:textColor="@color/duelsText"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/fourth_match"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/past_match"
+            android:textAllCaps="true"
+            android:textColor="@color/duelsText"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/buttonRightMargin"
+        android:layout_marginLeft="@dimen/buttonLeftMargin"
+        android:layout_marginRight="@dimen/buttonRightMargin"
+        android:layout_marginStart="@dimen/buttonLeftMargin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/name_player_a"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/textTopMargin"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:hint="@string/player_A"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textAllCaps="true"
+                android:textColor="@color/valueText"
+                android:textColorHint="@color/valueText"
+                android:textSize="@dimen/playerNames" />
+
+            <TextView
+                android:id="@+id/match_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/textTopMargin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/starting_score"
+                android:textColor="@color/valueText"
+                android:textSize="@dimen/valuesSize" />
+
+            <EditText
+                android:id="@+id/name_player_b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/textTopMargin"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:hint="@string/player_b"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textAllCaps="true"
+                android:textColor="@color/valueText"
+                android:textColorHint="@color/valueText"
+                android:textSize="@dimen/playerNames" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="@dimen/nullSize"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/life_player_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/initial_life"
+                        android:textColor="@color/valueText"
+                        android:textSize="@dimen/valuesSize" />
+
+                    <TextView
+                        android:id="@+id/poison_player_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/initial_poison"
+                        android:textColor="@color/valueText"
+                        android:textSize="@dimen/valuesSize" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textBottomMargin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/life_points"
+                        android:textColor="@color/valueText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/textSideMargin"
+                        android:layout_marginRight="@dimen/textSideMargin"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/poison_counters"
+                        android:textColor="@color/valueText" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttonHeight">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/life_button_inc"
+                        android:onClick="addLife_A"
+                        android:text="@string/plus"
+                        android:textColor="@color/plus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <View
+                        android:layout_width="@dimen/widthDivider"
+                        android:layout_height="match_parent"
+                        android:background="@color/divider" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/life_button_dec"
+                        android:onClick="removeLife_A"
+                        android:text="@string/minus"
+                        android:textColor="@color/minus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/poison_button_inc"
+                        android:onClick="addPoison_A"
+                        android:text="@string/plus"
+                        android:textColor="@color/plus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <View
+                        android:layout_width="@dimen/widthDivider"
+                        android:layout_height="match_parent"
+                        android:background="@color/divider" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/poison_button_dec"
+                        android:onClick="removePoison_A"
+                        android:text="@string/minus"
+                        android:textColor="@color/minus"
+                        android:textSize="@dimen/incAndDec" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_marginTop="@dimen/buttonTopMargin">
+
+                    <Button
+                        android:id="@+id/mill_win_a"
+                        style="?android:buttonBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/mill_button"
+                        android:onClick="mill_A"
+                        android:text="@string/mill"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text" />
+
+                    <Button
+                        android:id="@+id/other_win_a"
+                        style="?android:buttonBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/other_button"
+                        android:onClick="other_A"
+                        android:text="@string/other"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/widthDivider"
+                android:layout_height="match_parent"
+                android:background="@color/valueText" />
+
+            <LinearLayout
+                android:layout_width="@dimen/nullSize"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/poison_player_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/initial_poison"
+                        android:textColor="@color/valueText"
+                        android:textSize="@dimen/valuesSize" />
+
+                    <TextView
+                        android:id="@+id/life_player_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/initial_life"
+                        android:textColor="@color/valueText"
+                        android:textSize="@dimen/valuesSize" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textBottomMargin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/textSideMargin"
+                        android:layout_marginStart="@dimen/textSideMargin"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/poison_counters"
+                        android:textColor="@color/valueText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/life_points"
+                        android:textColor="@color/valueText" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttonHeight">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/poison_button_inc"
+                        android:onClick="addPoison_B"
+                        android:text="@string/plus"
+                        android:textColor="@color/plus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <View
+                        android:layout_width="@dimen/widthDivider"
+                        android:layout_height="match_parent"
+                        android:background="@color/divider" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonLeftMargin"
+                        android:layout_marginRight="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/poison_button_dec"
+                        android:onClick="removePoison_B"
+                        android:text="@string/minus"
+                        android:textColor="@color/minus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/life_button_inc"
+                        android:onClick="addLife_B"
+                        android:text="@string/plus"
+                        android:textColor="@color/plus"
+                        android:textSize="@dimen/incAndDec" />
+
+                    <View
+                        android:layout_width="@dimen/widthDivider"
+                        android:layout_height="match_parent"
+                        android:background="@color/divider" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/life_button_dec"
+                        android:onClick="removeLife_B"
+                        android:text="@string/minus"
+                        android:textColor="@color/minus"
+                        android:textSize="@dimen/incAndDec" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttonHeight"
+                    android:layout_marginTop="@dimen/buttonTopMargin">
+
+                    <Button
+                        android:id="@+id/other_win_b"
+                        style="?android:buttonBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/other_button"
+                        android:onClick="other_B"
+                        android:text="@string/other"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text" />
+
+                    <Button
+                        android:id="@+id/mill_win_b"
+                        style="?android:buttonBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/buttonRightMargin"
+                        android:layout_marginLeft="@dimen/buttonLeftMargin"
+                        android:layout_marginRight="@dimen/buttonRightMargin"
+                        android:layout_marginStart="@dimen/buttonLeftMargin"
+                        android:layout_weight="1"
+                        android:background="@drawable/mill_button_mirror"
+                        android:onClick="mill_B"
+                        android:text="@string/mill"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tie_win"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/buttonTopMargin"
+            android:background="@drawable/tie_button"
+            android:onClick="tie"
+            android:text="@string/tie"
+            android:textColor="@color/text" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reset_duel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/buttonHeight"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/buttonBottomMargin"
+        android:layout_marginLeft="@dimen/buttonLeftMargin"
+        android:layout_marginStart="@dimen/buttonLeftMargin"
+        android:background="@drawable/reset_duel_button"
+        android:onClick="reset_duel"
+        android:padding="@dimen/buttonPadding"
+        android:text="@string/restart_duel"
+        android:textColor="@color/text" />
+
+    <Button
+        android:id="@+id/reset_match"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/buttonHeight"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/buttonBottomMargin"
+        android:layout_marginEnd="@dimen/buttonRightMargin"
+        android:layout_marginRight="@dimen/buttonRightMargin"
+        android:background="@drawable/reset_match_button"
+        android:onClick="reset_match"
+        android:padding="@dimen/buttonPadding"
+        android:text="@string/restart_match"
+        android:textColor="@color/text" />
+
+</RelativeLayout>
